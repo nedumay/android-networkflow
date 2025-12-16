@@ -1,6 +1,5 @@
 plugins {
     alias(libs.plugins.android.library)
-    id("maven-publish")
 }
 
 android {
@@ -26,12 +25,6 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
-    }
-    publishing {
-        singleVariant("release") {
-            withSourcesJar()
-            withJavadocJar()
-        }
     }
 }
 
