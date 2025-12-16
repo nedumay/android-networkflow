@@ -28,3 +28,53 @@ dependencyResolutionManagement {
     }
 }
 ```
+
+### 2. Добавьте зависимость в app/build.gradle.kts
+```kotlin
+dependencies {
+    implementation("com.github.yourname:networkflow:v1.0.0")
+}
+```
+
+### Использование в Activity / Fragment (View system):
+```kotlin
+val monitor = NetworkMonitorFactory.create(this) // this = Activity или Fragment
+
+lifecycleScope.launch {
+    repeatOnLifecycle(Lifecycle.State.STARTED) {
+        monitor.networkState.collect { state ->
+            when (state) {
+                NetworkState.Online -> showContent()
+                NetworkState.Offline -> showOfflineMessage()
+                NetworkState.CaptivePortal -> showCaptivePortalWarning()
+                is NetworkState.Limited -> showLimitedConnectionWarning()
+                NetworkState.Unknown -> showLoadingState()
+            }
+        }
+    }
+}
+```
+
+### Использование в Jetpack Compose:
+```kotlin
+@Composable
+fun MyScreen() {
+    val lifecycleOwner = LocalLifecycleOwner.current
+    val monitor = remember(lifecycleOwner) {
+        NetworkMonitorFactory.create(lifecycleOwner)
+    }
+    val networkState by monitor.networkState.collectAsState()
+
+    Scaffold { padding ->
+        Box(modifier = Modifier.padding(padding)) {
+            when (networkState) {
+                NetworkState.Online -> Text("Всё работает!")
+                NetworkState.Offline -> Text("Нет интернета")
+                NetworkState.CaptivePortal -> Text("Требуется авторизация в Wi-Fi")
+                is NetworkState.Limited -> Text("Ограниченное подключение")
+                NetworkState.Unknown -> CircularProgressIndicator()
+            }
+        }
+    }
+}
+```
