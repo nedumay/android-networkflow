@@ -1,7 +1,5 @@
 # NetworkFlow
 
-[![JitPack](https://jitpack.io/v/yourname/networkflow.svg)](https://jitpack.io/#yourname/networkflow)
-
 Простая, безопасная и lifecycle-aware библиотека для отслеживания состояния сети в Android-приложениях.  
 Определяет не просто подключение, а **реальное наличие интернета**, включая кейсы вроде **captive portal** (авторизация в отелях, аэропортах и т.д.).
 
