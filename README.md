@@ -32,7 +32,7 @@ dependencyResolutionManagement {
 ### 2. Добавьте зависимость в app/build.gradle.kts
 ```kotlin
 dependencies {
-    implementation("com.github.yourname:networkflow:v1.0.0")
+    implementation("com.github.nedumay:android-networkflow:0.0.3")
 }
 ```
 
