@@ -1,5 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
+    id("org.jetbrains.kotlin.android")
+    id("maven-publish")
 }
 
 android {
@@ -9,7 +11,7 @@ android {
     defaultConfig {
         minSdk = 26
 
-        testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
 
@@ -23,8 +25,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     publishing {
         singleVariant("release") {
