@@ -1,4 +1,4 @@
-package ru.nedumayy.network_flow.state
+package ru.nedumayy.networkflow.state
 
 /**
  * Состояния подключения к сети

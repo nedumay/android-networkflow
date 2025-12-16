@@ -1,4 +1,4 @@
-package ru.nedumayy.network_flow
+package ru.nedumayy.networkflow
 
 
 import androidx.lifecycle.LifecycleOwner

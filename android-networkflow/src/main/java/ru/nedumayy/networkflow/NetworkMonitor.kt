@@ -1,7 +1,7 @@
-package ru.nedumayy.network_flow
+package ru.nedumayy.networkflow
 
 import kotlinx.coroutines.flow.StateFlow
-import ru.nedumayy.network_flow.state.NetworkState
+import ru.nedumayy.networkflow.state.NetworkState
 
 interface NetworkMonitor {
     val networkState: StateFlow<NetworkState>

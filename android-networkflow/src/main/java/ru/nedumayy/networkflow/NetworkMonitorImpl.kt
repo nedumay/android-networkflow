@@ -1,4 +1,4 @@
-package ru.nedumayy.network_flow
+package ru.nedumayy.networkflow
 
 import android.content.Context
 import android.net.ConnectivityManager
@@ -10,7 +10,7 @@ import androidx.lifecycle.LifecycleOwner
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import ru.nedumayy.network_flow.state.NetworkState
+import ru.nedumayy.networkflow.state.NetworkState
 
 /**
  * Класс реализации мониторинга сети
@@ -46,9 +46,9 @@ class NetworkMonitorImpl(private val lifecycleOwner: LifecycleOwner) : NetworkMo
 
         override fun onCapabilitiesChanged(
             network: Network,
-            networkCapabilities: NetworkCapabilities
+            networkCapabilities: NetworkCapabilities,
         ) {
-            if(network == connectivityManager.activeNetwork){
+            if (network == connectivityManager.activeNetwork) {
                 _networkState.tryEmit(mapCapabilitiesToState(networkCapabilities))
             }
         }
@@ -80,7 +80,8 @@ class NetworkMonitorImpl(private val lifecycleOwner: LifecycleOwner) : NetworkMo
 
         val hasInternet = capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
         val validated = capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED)
-        val captivePortal = capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_CAPTIVE_PORTAL)
+        val captivePortal =
+            capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_CAPTIVE_PORTAL)
 
         return when {
             hasInternet && validated -> {
