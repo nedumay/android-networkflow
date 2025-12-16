@@ -20,4 +20,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "NetworkFlow"
-include(":networkflow-library")
+include(":android-networkflow")
