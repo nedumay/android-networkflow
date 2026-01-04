@@ -24,7 +24,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven("https://jitpack.io") // ← эта строка
+        maven("https://jitpack.io") 
     }
 }
 ```
